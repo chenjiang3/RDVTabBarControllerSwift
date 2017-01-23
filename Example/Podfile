@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RDVTabBarControllerSwift_Example' do
+  pod 'RDVTabBarControllerSwift', :path => '../'
+
+  target 'RDVTabBarControllerSwift_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

@@ -59,16 +59,20 @@ class TabBarViewController: RDVTabBarController {
     }
 
     func setupViewControllers() {
-        let vc1 = UIViewController()
+        let vc1 = BaseViewController()
+        vc1.title = "vc1"
         let nav1 = UINavigationController(rootViewController: vc1)
 
-        let vc2 = UIViewController()
+        let vc2 = BaseViewController()
+        vc2.title = "vc2"
         let nav2 = UINavigationController(rootViewController: vc2)
 
-        let vc3 = UIViewController()
+        let vc3 = BaseViewController()
+        vc3.title = "vc3"
         let nav3 = UINavigationController(rootViewController: vc3)
 
-        let vc4 = UIViewController()
+        let vc4 = BaseViewController()
+        vc4.title = "vc4"
         let nav4 = UINavigationController(rootViewController: vc4)
 
         self.viewControllers = [nav1, nav2, nav3, nav4]
@@ -82,7 +86,7 @@ class TabBarViewController: RDVTabBarController {
         self.tabBar.setHeight(TABBAR_HEIGHT)
 
         let tabBarItemImages = ["tabMe", "tabMe", "tabMe", "tabMe"]
-        let tabbarTitles = ["vc1", "vc2", "vc3", "vc4"]
+        let tabbarTitles = ["微信", "通讯录", "发现", "我"]
 
         guard let items = self.tabBar.items else {
             return
@@ -96,10 +100,27 @@ class TabBarViewController: RDVTabBarController {
         topBorder.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
         self.tabBar.backgroundView.backgroundColor = UIColor.clear
 
+        let selectedTabColor = UIColor(rgb: 0x2e72db)
+        let normalTabColor = UIColor(rgb: 0x81818c)
 
         var i = 0
         for item in items {
+            item.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 1)
+            let selectedimage = UIImage(named: "\(tabBarItemImages[i])+")
+            let unselectedimage = UIImage(named: "\(tabBarItemImages[i])")
+            item.setFinishedSelectedImage(selectedimage, unselectedImage: unselectedimage)
+
             item.title = tabbarTitles[i]
+
+            item.selectedTitleAttributes = [
+                NSForegroundColorAttributeName: selectedTabColor,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 11)
+            ]
+            item.unselectedTitleAttributes = [
+                NSForegroundColorAttributeName: normalTabColor,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 11)
+            ]
+
             i += 1
         }
     }

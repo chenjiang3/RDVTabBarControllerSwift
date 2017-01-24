@@ -10,7 +10,7 @@ import UIKit
 
 protocol RDVTabBarDelegate: NSObjectProtocol {
 
-    func tabBar(_ tabBar: RDVTabBar?, shouldSelectItemAtIndex: Int, resultBlock: ((Bool) -> Void)?)
+    func tabBar(_ tabBar: RDVTabBar?, shouldSelectItemAtIndex: Int) -> Bool
     func tabBar(_ tabBar: RDVTabBar?, didSelectItemAtIndex: Int)
 }
 
@@ -35,6 +35,23 @@ open class RDVTabBar: UIView {
                 item.addTarget(self, action: #selector(tabBarItemWasSelected(_:)), for: .touchDown)
                 addSubview(item)
             }
+        }
+    }
+
+    var _selectedItem: RDVTabBarItem?
+    var selectedItem: RDVTabBarItem? {
+        get {
+            return _selectedItem
+        }
+        set {
+            if let oldSelectedItem = _selectedItem, oldSelectedItem == newValue{
+                return
+            }
+
+            _selectedItem?.isSelected = false
+
+            _selectedItem = newValue
+            _selectedItem?.isSelected = true
         }
     }
 
@@ -122,9 +139,23 @@ open class RDVTabBar: UIView {
         return minimumTabBarContentHeight
     }
 
-    func tabBarItemWasSelected(_ sender: Any) {
+    // MARK: - Item selection
+    func tabBarItemWasSelected(_ sender: RDVTabBarItem) {
+        if let delegate = self.delegate {
+            var index = self.items?.index(of: sender)
 
+            if delegate.tabBar(self, shouldSelectItemAtIndex: index!) == false {
+                return
+            }
+
+            self.selectedItem = sender
+
+            index = self.items?.index(of: sender)
+            delegate.tabBar(self, didSelectItemAtIndex: index!)
+        }
     }
+
+
 
 }
 

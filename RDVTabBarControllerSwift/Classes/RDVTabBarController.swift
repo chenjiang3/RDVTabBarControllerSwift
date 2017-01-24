@@ -8,7 +8,16 @@
 
 import UIKit
 
+// MARK: - RDVTabBarControllerDelegate
+public protocol RDVTabBarControllerDelegate: NSObjectProtocol {
+    func tabBarController(_ tabBarController: RDVTabBarController, shouldSelectViewController: UIViewController) -> Bool
+    func tabBarController(_ tabBarController: RDVTabBarController, didSelectViewController: UIViewController)
+}
+
+// MARK: - RDVTabBarController
 open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
+
+    weak var delegate: RDVTabBarControllerDelegate?
 
     var _tabBarHidden = false
     var tabBarHidden: Bool {
@@ -20,14 +29,22 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
         }
     }
 
+    var _selectedViewController: UIViewController?
+    open var selectedViewController: UIViewController? {
+        get {
+            return _selectedViewController
+        }
+        set {
+            _selectedViewController = newValue
+        }
+    }
+
     var _selectedIndex: Int = 0
     open var selectedIndex: Int {
         get {
             return _selectedIndex
         }
         set {
-            _selectedIndex = newValue
-
             guard let viewControllers = viewControllers else {
                 return
             }
@@ -36,7 +53,26 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
                 return
             }
 
+            if let selectedViewController = self.selectedViewController {
+                selectedViewController.willMove(toParentViewController: nil)
+                selectedViewController.view.removeFromSuperview()
+                selectedViewController.removeFromParentViewController()
+            }
 
+            _selectedIndex = newValue
+
+            self.tabBar.selectedItem = self.tabBar.items?[_selectedIndex]
+
+            self.selectedViewController = self.viewControllers?[_selectedIndex]
+
+            if let selectedViewController0 = self.selectedViewController {
+                addChildViewController(selectedViewController0)
+                selectedViewController0.view.frame = self.contentView.bounds
+                self.contentView.addSubview(selectedViewController0.view)
+                selectedViewController0.didMove(toParentViewController: self)
+            }
+
+            setNeedsStatusBarAppearanceUpdate()
         }
     }
 
@@ -94,10 +130,6 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
                 self._viewControllers = nil
             }
         }
-    }
-
-    var selectedViewController: UIViewController? {
-        return self.viewControllers?[self.selectedIndex]
     }
 
     override open func viewDidLoad() {
@@ -161,14 +193,6 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
         }
     }
 
-    func tabBar(_ tabBar: RDVTabBar?, shouldSelectItemAtIndex: Int, resultBlock: ((Bool) -> Void)?) {
-
-    }
-
-    func tabBar(_ tabBar: RDVTabBar?, didSelectItemAtIndex: Int) {
-
-    }
-
     func indexForViewController(_ viewController: UIViewController) -> Int {
         var searchedController = viewController
         if let navController = searchedController.navigationController {
@@ -179,6 +203,33 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
 
 
 
+}
+
+// MARK: - RDVTabBarDelegate
+extension RDVTabBarController {
+
+    func tabBar(_ tabBar: RDVTabBar?, shouldSelectItemAtIndex index: Int) -> Bool {
+//        if let delegate = self.delegate {
+//            if delegate.tabBarController(self, shouldSelectViewController: self.viewControllers[index]) {
+//                return false
+//            }
+//        }
+//
+//        if let selectedViewController = self.selectedViewController, let viewvc = self.viewControllers[index], selectedViewController == viewvc {
+//            if selectedViewController.isKind(of: UINavigationController.self) {
+//                let selectedController = selectedViewController as! UINavigationController
+//                if let topViewController = selectedController.topViewController {
+//
+//                }
+//            }
+//        }
+
+        return true
+    }
+
+    func tabBar(_ tabBar: RDVTabBar?, didSelectItemAtIndex: Int) {
+        
+    }
 }
 
 // MARK: - UIViewController+RDVTabBarControllerItem
@@ -205,20 +256,6 @@ extension UIViewController {
 
 }
 
-// MARK: - ClosureWrapper
-class ClosureWrapper<T>: NSObject, NSCopying {
-    public var closure: T?
-
-    convenience init(_ closure: T?) {
-        self.init()
-        self.closure = closure
-    }
-
-    func copy(with zone: NSZone? = nil) -> Any {
-        let wrapper = ClosureWrapper(closure)
-        return wrapper
-    }
-}
 
 
 

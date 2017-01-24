@@ -12,17 +12,17 @@ open class RDVTabBarItem: UIControl {
 
     open var title = ""
     var imagePositionAdjustment: UIOffset = UIOffset(horizontal: 0, vertical: 0)
-    var unselectedTitleAttributes = [
+    open var unselectedTitleAttributes = [
         NSFontAttributeName: UIFont.systemFont(ofSize: 12),
         NSForegroundColorAttributeName: UIColor.black
     ]
 
-    var selectedTitleAttributes = [
+    open var selectedTitleAttributes = [
         NSFontAttributeName: UIFont.systemFont(ofSize: 12),
         NSForegroundColorAttributeName: UIColor.black
     ]
 
-    var titlePositionAdjustment = UIOffset.zero
+    open var titlePositionAdjustment = UIOffset.zero
 
     var badgeBackgroundColor = UIColor.red
     var badgeTextColor = UIColor.white
@@ -48,6 +48,11 @@ open class RDVTabBarItem: UIControl {
 
     func commonInitialization() {
         backgroundColor = UIColor.clear
+    }
+
+    open func setFinishedSelectedImage(_ selectedImage: UIImage?, unselectedImage: UIImage?) {
+        self.selectedImage = selectedImage
+        self.unselectedImage = unselectedImage
     }
 
     open override func draw(_ rect: CGRect) {

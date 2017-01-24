@@ -1,0 +1,16 @@
+PODS:
+  - RDVTabBarControllerSwift (0.1.0)
+
+DEPENDENCIES:
+  - RDVTabBarControllerSwift (from `../`)
+
+EXTERNAL SOURCES:
+  RDVTabBarControllerSwift:
+    :path: ../
+
+SPEC CHECKSUMS:
+  RDVTabBarControllerSwift: 6e6ea4623818c40fd32873c800ea2279c0c637b5
+
+PODFILE CHECKSUM: b133098bcdec82b2ad8c620c81b2215e951c544d
+
+COCOAPODS: 1.2.0.beta.1

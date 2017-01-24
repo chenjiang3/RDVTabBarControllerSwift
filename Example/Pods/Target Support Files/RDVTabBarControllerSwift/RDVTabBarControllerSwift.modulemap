@@ -1,0 +1,6 @@
+framework module RDVTabBarControllerSwift {
+  umbrella header "RDVTabBarControllerSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

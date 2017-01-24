@@ -43,7 +43,7 @@ open class RDVTabBar: UIView {
     var contentEdgeInsets = UIEdgeInsets.zero
     var itemWidth: CGFloat?
 
-    var backgroundView = UIView()
+    open var backgroundView = UIView()
 
     var _translucent: Bool = false
     var translucent: Bool {

@@ -136,26 +136,3 @@ extension RDVTabBarItem {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

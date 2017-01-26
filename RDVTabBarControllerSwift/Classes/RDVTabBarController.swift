@@ -209,26 +209,39 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
 extension RDVTabBarController {
 
     func tabBar(_ tabBar: RDVTabBar?, shouldSelectItemAtIndex index: Int) -> Bool {
-//        if let delegate = self.delegate {
-//            if delegate.tabBarController(self, shouldSelectViewController: self.viewControllers[index]) {
-//                return false
-//            }
-//        }
-//
-//        if let selectedViewController = self.selectedViewController, let viewvc = self.viewControllers[index], selectedViewController == viewvc {
-//            if selectedViewController.isKind(of: UINavigationController.self) {
-//                let selectedController = selectedViewController as! UINavigationController
-//                if let topViewController = selectedController.topViewController {
-//
-//                }
-//            }
-//        }
+        if let delegate = self.delegate, let viewController = self.viewControllers?[index] {
+            if delegate.tabBarController(self, shouldSelectViewController: viewController) == false {
+                return false
+            }
+        }
+
+        if let selectedViewController = self.selectedViewController, let viewvc = self.viewControllers?[index], selectedViewController == viewvc {
+            if selectedViewController.isKind(of: UINavigationController.self) {
+                let selectedController = selectedViewController as! UINavigationController
+                if let topViewController = selectedController.topViewController, topViewController != selectedController.viewControllers[0] {
+                    selectedController.popToRootViewController(animated: true)
+                }
+            }
+            return false
+        }
 
         return true
     }
 
-    func tabBar(_ tabBar: RDVTabBar?, didSelectItemAtIndex: Int) {
-        
+    func tabBar(_ tabBar: RDVTabBar?, didSelectItemAtIndex index: Int) {
+        guard let viewControllers = self.viewControllers else {
+            return
+        }
+
+        if index < 0 || index >= viewControllers.count {
+            return
+        }
+
+        self.selectedIndex = index
+
+        if let delegate = self.delegate {
+            delegate.tabBarController(self, didSelectViewController: viewControllers[index])
+        }
     }
 }
 
@@ -255,8 +268,6 @@ extension UIViewController {
 //    }
 
 }
-
-
 
 
 

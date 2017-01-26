@@ -17,7 +17,7 @@ public protocol RDVTabBarControllerDelegate: NSObjectProtocol {
 // MARK: - RDVTabBarController
 open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
 
-    weak var delegate: RDVTabBarControllerDelegate?
+    open weak var delegate: RDVTabBarControllerDelegate?
 
     var _tabBarHidden = false
     var tabBarHidden: Bool {

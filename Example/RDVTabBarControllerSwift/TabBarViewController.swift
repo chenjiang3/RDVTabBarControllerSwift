@@ -94,6 +94,8 @@ class TabBarViewController: RDVTabBarController, RDVTabBarControllerDelegate {
         self.customTabBar()
 
         self.selectedIndex = 0
+
+        self.delegate = self
     }
 
     func customTabBar() {

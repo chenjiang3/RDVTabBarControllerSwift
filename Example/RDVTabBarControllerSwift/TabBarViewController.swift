@@ -48,14 +48,26 @@ extension UIColor {
 
 fileprivate let TABBAR_HEIGHT: CGFloat = 50.0
 
-class TabBarViewController: RDVTabBarController {
+class TabBarViewController: RDVTabBarController, RDVTabBarControllerDelegate {
+
+    var vc4: UINavigationController?
+
+    // MARK: - RDVTabBarControllerDelegate
+    func tabBarController(_ tabBarController: RDVTabBarController, didSelectViewController viewController: UIViewController) {
+        print("selected viewcontroller \(viewController)")
+    }
+
+    func tabBarController(_ tabBarController: RDVTabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        if let vc4 = self.vc4, vc4 == viewController {
+            return false
+        }
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViewControllers()
-
-
     }
 
     func setupViewControllers() {
@@ -74,6 +86,8 @@ class TabBarViewController: RDVTabBarController {
         let vc4 = BaseViewController()
         vc4.title = "vc4"
         let nav4 = UINavigationController(rootViewController: vc4)
+
+        self.vc4 = nav4
 
         self.viewControllers = [nav1, nav2, nav3, nav4]
 
@@ -126,24 +140,4 @@ class TabBarViewController: RDVTabBarController {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

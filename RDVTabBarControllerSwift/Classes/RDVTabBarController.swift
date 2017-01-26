@@ -10,8 +10,8 @@ import UIKit
 
 // MARK: - RDVTabBarControllerDelegate
 public protocol RDVTabBarControllerDelegate: NSObjectProtocol {
-    func tabBarController(_ tabBarController: RDVTabBarController, shouldSelectViewController: UIViewController) -> Bool
-    func tabBarController(_ tabBarController: RDVTabBarController, didSelectViewController: UIViewController)
+    func tabBarController(_ tabBarController: RDVTabBarController, shouldSelectViewController viewController: UIViewController) -> Bool
+    func tabBarController(_ tabBarController: RDVTabBarController, didSelectViewController viewController: UIViewController)
 }
 
 // MARK: - RDVTabBarController
@@ -261,62 +261,30 @@ extension UIViewController {
         return tabBarController as? RDVTabBarController
     }
 
-//    func rdv_tabBarItem() -> RDVTabBarItem {
-//        let tabBarController = rdv_tabBarController()
-//        let index = tabBarController?.indexForViewController(self)
-//        return tabBarController?.tabBar
-//    }
+    func rdv_tabBarItem() -> RDVTabBarItem? {
+        guard let tabBarController = self.rdv_tabBarController() else {
+            return nil
+        }
+
+        let index = tabBarController.indexForViewController(self)
+        return tabBarController.tabBar.items?[index]
+    }
+
+    func rdv_setTabBarItem(_ tabBarItem: RDVTabBarItem) {
+        guard let tabBarController = self.rdv_tabBarController() else {
+            return
+        }
+
+        let tabBar = tabBarController.tabBar
+        let index = tabBarController.indexForViewController(self)
+
+        guard let tabBarItems = tabBar.items else {
+            return
+        }
+
+        var copyArray = tabBarItems
+        copyArray[index] = tabBarItem
+        tabBar.items = copyArray
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

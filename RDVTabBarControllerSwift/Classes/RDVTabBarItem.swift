@@ -164,7 +164,7 @@ open class RDVTabBarItem: UIControl {
 
             context?.setFillColor(badgeTextColor.cgColor)
 
-            var badgeTextStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+            let badgeTextStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
             badgeTextStyle.lineBreakMode = .byWordWrapping
             badgeTextStyle.alignment = NSTextAlignment.center
 

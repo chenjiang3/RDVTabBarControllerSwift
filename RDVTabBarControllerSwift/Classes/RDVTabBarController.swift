@@ -34,7 +34,7 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
     open weak var delegate: RDVTabBarControllerDelegate?
 
     var _tabBarHidden = false
-    var tabBarHidden: Bool {
+    open var tabBarHidden: Bool {
         get {
             return _tabBarHidden
         }
@@ -162,7 +162,7 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
         self.setTabBarHidden(self.tabBarHidden, animated: false)
     }
 
-    func setTabBarHidden(_ hidden: Bool, animated: Bool) {
+    open func setTabBarHidden(_ hidden: Bool, animated: Bool) {
         _tabBarHidden = hidden
 
         let block = { [weak self] in
@@ -215,8 +215,6 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
         return viewControllers?.index(of: searchedController) ?? 0
     }
 
-
-
 }
 
 // MARK: - RDVTabBarDelegate
@@ -261,13 +259,13 @@ extension RDVTabBarController {
 
 // MARK: - UIViewController+RDVTabBarControllerItem
 fileprivate var key_rdv_tabBarController = "rdv_tabBarController"
-extension UIViewController {
+public extension UIViewController {
 
-    func rdv_setTabBarController(_ tabBarController: RDVTabBarController?) {
+    public func rdv_setTabBarController(_ tabBarController: RDVTabBarController?) {
         objc_setAssociatedObject(self, &key_rdv_tabBarController, tabBarController, .OBJC_ASSOCIATION_ASSIGN)
     }
 
-    func rdv_tabBarController() -> RDVTabBarController? {
+    public func rdv_tabBarController() -> RDVTabBarController? {
         guard let tabBarController = objc_getAssociatedObject(self, &key_rdv_tabBarController) else {
             return self.parent?.rdv_tabBarController()
         }
@@ -275,7 +273,7 @@ extension UIViewController {
         return tabBarController as? RDVTabBarController
     }
 
-    func rdv_tabBarItem() -> RDVTabBarItem? {
+    public func rdv_tabBarItem() -> RDVTabBarItem? {
         guard let tabBarController = self.rdv_tabBarController() else {
             return nil
         }
@@ -284,7 +282,7 @@ extension UIViewController {
         return tabBarController.tabBar.items?[index]
     }
 
-    func rdv_setTabBarItem(_ tabBarItem: RDVTabBarItem) {
+    public func rdv_setTabBarItem(_ tabBarItem: RDVTabBarItem) {
         guard let tabBarController = self.rdv_tabBarController() else {
             return
         }

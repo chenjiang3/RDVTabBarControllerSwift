@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RDVTabBarControllerSwift
 
 class BaseViewController: UIViewController {
 
@@ -17,9 +18,25 @@ class BaseViewController: UIViewController {
 
         let label = UILabel()
         label.textColor = UIColor.red
-        label.frame = CGRect(x: 20, y: 40, width: 100, height: 50)
+        label.frame = CGRect(x: 20, y: 100, width: 200, height: 50)
         view.addSubview(label)
-        label.text = "BaseViewController"
+        label.text = "hide tabbar"
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTapAction))
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
+    }
+
+    func onTapAction() {
+        guard let tabBarController = self.rdv_tabBarController() else {
+            return
+        }
+
+        if tabBarController.tabBarHidden == true {
+            tabBarController.setTabBarHidden(false, animated: true)
+        } else {
+            tabBarController.setTabBarHidden(true, animated: true)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

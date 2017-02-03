@@ -17,12 +17,13 @@ RDVTabBarControllerSwift is available through [CocoaPods](http://cocoapods.org).
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "RDVTabBarControllerSwift"
+pod "RDVTabBarControllerSwift", :git => 'git@github.com:chenjiang3/RDVTabBarControllerSwift.git'
 ```
 
 ## Author
 
-chenjiang, chenjiang@lvjinsuo.com
+chenjiang, 841346457@qq.com
+qq: 841346457
 
 ## License
 

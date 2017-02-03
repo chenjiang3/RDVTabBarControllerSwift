@@ -22,6 +22,8 @@
 
 import UIKit
 
+fileprivate let translucent_value = 0.9
+
 protocol RDVTabBarDelegate: NSObjectProtocol {
     func tabBar(_ tabBar: RDVTabBar?, shouldSelectItemAtIndex: Int) -> Bool
     func tabBar(_ tabBar: RDVTabBar?, didSelectItemAtIndex: Int)
@@ -82,7 +84,7 @@ open class RDVTabBar: UIView {
         }
         set {
             _translucent = newValue
-            let alpha = newValue ? CGFloat(0.9) : CGFloat(1.0)
+            let alpha = newValue ? CGFloat(translucent_value) : CGFloat(1.0)
             backgroundView.backgroundColor = UIColor(red: 245.0 / 255.0,
                                                      green: 245.0 / 255.0,
                                                      blue: 245.0 / 255.0,

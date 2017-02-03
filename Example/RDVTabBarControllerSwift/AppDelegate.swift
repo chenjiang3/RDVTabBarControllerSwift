@@ -32,6 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.viewController = tabBarController
 
         customizeTabBarForController(tabBarController)
+
+        let tabBar = tabBarController.tabBar
+        tabBar.translucent = true
+
+        tabBar.backgroundView.backgroundColor = UIColor(red: 245/255.0,
+                                                        green: 245/255.0,
+                                                        blue: 245/255.0,
+                                                        alpha: 0.9)
     }
 
     func customizeTabBarForController(_ tabBarController: RDVTabBarController) {

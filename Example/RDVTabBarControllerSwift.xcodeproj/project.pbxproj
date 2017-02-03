@@ -17,6 +17,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9A1145F91E35F60100F6438F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1145F81E35F60100F6438F /* TabBarViewController.swift */; };
 		9AC290FB1E375AE7004CD0DD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC290FA1E375AE7004CD0DD /* BaseViewController.swift */; };
+		9AD128411E444C790075661E /* RDVFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD128401E444C790075661E /* RDVFirstViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		9A1145F81E35F60100F6438F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9AC290FA1E375AE7004CD0DD /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		9AD128401E444C790075661E /* RDVFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDVFirstViewController.swift; sourceTree = "<group>"; };
 		9DAF6BCA0D745937101766E8 /* Pods_RDVTabBarControllerSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDVTabBarControllerSwift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69FDB2FCCDF3364D2BA19C9 /* Pods_RDVTabBarControllerSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDVTabBarControllerSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0FA7C2280F5893EC7516FB /* Pods-RDVTabBarControllerSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDVTabBarControllerSwift_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RDVTabBarControllerSwift_Tests/Pods-RDVTabBarControllerSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				9AD128401E444C790075661E /* RDVFirstViewController.swift */,
 			);
 			name = "Example for RDVTabBarControllerSwift";
 			path = RDVTabBarControllerSwift;
@@ -369,6 +372,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				9AC290FB1E375AE7004CD0DD /* BaseViewController.swift in Sources */,
+				9AD128411E444C790075661E /* RDVFirstViewController.swift in Sources */,
 				9A1145F91E35F60100F6438F /* TabBarViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

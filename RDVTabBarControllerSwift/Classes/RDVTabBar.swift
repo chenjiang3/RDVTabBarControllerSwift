@@ -23,7 +23,6 @@
 import UIKit
 
 protocol RDVTabBarDelegate: NSObjectProtocol {
-
     func tabBar(_ tabBar: RDVTabBar?, shouldSelectItemAtIndex: Int) -> Bool
     func tabBar(_ tabBar: RDVTabBar?, didSelectItemAtIndex: Int)
 }
@@ -53,7 +52,7 @@ open class RDVTabBar: UIView {
     }
 
     var _selectedItem: RDVTabBarItem?
-    var selectedItem: RDVTabBarItem? {
+    open var selectedItem: RDVTabBarItem? {
         get {
             return _selectedItem
         }
@@ -71,13 +70,13 @@ open class RDVTabBar: UIView {
 
     weak var delegate: RDVTabBarDelegate?
 
-    var contentEdgeInsets = UIEdgeInsets.zero
-    var itemWidth: CGFloat?
+    open var contentEdgeInsets = UIEdgeInsets.zero
+    open var itemWidth: CGFloat?
 
     open var backgroundView = UIView()
 
     var _translucent: Bool = false
-    var translucent: Bool {
+    open var translucent: Bool {
         get {
             return _translucent
         }
@@ -168,8 +167,6 @@ open class RDVTabBar: UIView {
             delegate.tabBar(self, didSelectItemAtIndex: index!)
         }
     }
-
-
 
 }
 

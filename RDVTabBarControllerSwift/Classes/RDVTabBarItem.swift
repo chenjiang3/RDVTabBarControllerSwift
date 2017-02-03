@@ -25,7 +25,7 @@ import UIKit
 open class RDVTabBarItem: UIControl {
 
     open var title = ""
-    var imagePositionAdjustment: UIOffset = UIOffset(horizontal: 0, vertical: 0)
+    open var imagePositionAdjustment = UIOffset(horizontal: 0, vertical: 0)
     open var unselectedTitleAttributes = [
         NSFontAttributeName: UIFont.systemFont(ofSize: 12),
         NSForegroundColorAttributeName: UIColor.black
@@ -38,17 +38,28 @@ open class RDVTabBarItem: UIControl {
 
     open var titlePositionAdjustment = UIOffset.zero
 
-    var badgeBackgroundColor = UIColor.red
-    var badgeTextColor = UIColor.white
-    var badgeTextFont = UIFont.systemFont(ofSize: 12)
-    var badgePositionAdjustment = UIOffset.zero
+    open var _badgeValue = ""
+    open var badgeValue: String {
+        get {
+            return _badgeValue
+        }
+        set {
+            _badgeValue = newValue
 
-    var unselectedBackgroundImage: UIImage?
-    var selectedBackgroundImage: UIImage?
-    var unselectedImage: UIImage?
-    var selectedImage: UIImage?
+            setNeedsDisplay()
+        }
+    }
+    open var badgeBackgroundColor = UIColor.red
+    open var badgeTextColor = UIColor.white
+    open var badgeTextFont = UIFont.systemFont(ofSize: 12)
+    open var badgePositionAdjustment = UIOffset.zero
 
-    var itemHeight: CGFloat?
+    open var unselectedBackgroundImage: UIImage?
+    open var selectedBackgroundImage: UIImage?
+    open var unselectedImage: UIImage?
+    open var selectedImage: UIImage?
+
+    open var itemHeight: CGFloat?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -119,6 +130,50 @@ open class RDVTabBarItem: UIControl {
             y = imageStartingY + imageSize.height + titlePositionAdjustment.vertical
             let rect = CGRect(x: x, y: y, width: titleSize.width, height: titleSize.height)
             NSString(string: title).draw(in: rect, withAttributes: titleAttributes)
+        }
+
+        // Draw badges
+        if let badgeValue = Int(badgeValue), badgeValue != 0 {
+            var badgeSize = CGSize.zero
+
+            badgeSize = NSString(string: self.badgeValue).boundingRect(with: CGSize(width: frameSize.width,
+                                                                                    height: CGFloat(20)),
+                                                                       options: .usesLineFragmentOrigin,
+                                                                       attributes: [NSFontAttributeName: badgeTextFont],
+                                                                       context: nil).size
+            let textOffset = CGFloat(2.0)
+
+            if badgeSize.width < badgeSize.height {
+                badgeSize = CGSize(width: badgeSize.height, height: badgeSize.height)
+            }
+
+            let x = CGFloat(roundf(Float((frameSize.width / CGFloat(2) + (imageSize.width / CGFloat(2)) * CGFloat(0.9))))) + badgePositionAdjustment.horizontal
+            let y = textOffset + badgePositionAdjustment.vertical
+            let badgeBackgroundFrame = CGRect(x: x,
+                                              y: y,
+                                              width: badgeSize.width + CGFloat(2) * textOffset,
+                                              height: badgeSize.height + CGFloat(2) * textOffset)
+
+            context?.setFillColor(badgeBackgroundColor.cgColor)
+            context?.fillEllipse(in: badgeBackgroundFrame)
+
+            context?.setFillColor(badgeTextColor.cgColor)
+
+            var badgeTextStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+            badgeTextStyle.lineBreakMode = .byWordWrapping
+            badgeTextStyle.alignment = NSTextAlignment.center
+
+            let badgeTextAttributes: [String : Any] = [
+                NSFontAttributeName: badgeTextFont,
+                NSForegroundColorAttributeName: badgeTextColor,
+                NSParagraphStyleAttributeName: badgeTextStyle
+            ]
+
+            let rect = CGRect(x: badgeBackgroundFrame.minX + textOffset,
+                              y: badgeBackgroundFrame.minY + textOffset,
+                              width: badgeSize.width,
+                              height: badgeSize.height)
+            NSString(string: self.badgeValue).draw(in: rect, withAttributes: badgeTextAttributes)
         }
 
 

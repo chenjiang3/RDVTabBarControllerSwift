@@ -80,6 +80,11 @@ open class RDVTabBarItem: UIControl {
         self.unselectedImage = unselectedImage
     }
 
+    open func setBackgroundSelectedImage(_ selectedImage: UIImage?, unselectedImage: UIImage?) {
+        self.selectedBackgroundImage = selectedImage
+        self.unselectedBackgroundImage = unselectedImage
+    }
+
     open override func draw(_ rect: CGRect) {
         let frameSize = frame.size
         var imageSize = CGSize.zero

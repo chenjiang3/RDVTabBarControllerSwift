@@ -7,15 +7,52 @@
 //
 
 import UIKit
+import RDVTabBarControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var viewController: UIViewController?
+
     func setupTabViewController() {
-        let tabBarController = TabBarViewController()
-        window?.rootViewController = tabBarController
+        let firstViewController = RDVFirstViewController(nibName: nil, bundle: nil)
+        let firstNavigationController = UINavigationController(rootViewController: firstViewController)
+
+        let secondViewController = RDVSecondViewController(nibName: nil, bundle: nil)
+        let secondNavigationController = UINavigationController(rootViewController: secondViewController)
+
+        let thirdViewController = RDVThirdViewController(nibName: nil, bundle: nil)
+        let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
+
+        let tabBarController = RDVTabBarController()
+        tabBarController.viewControllers = [firstNavigationController, secondNavigationController, thirdNavigationController]
+
+        self.viewController = tabBarController
+
+        customizeTabBarForController(tabBarController)
+    }
+
+    func customizeTabBarForController(_ tabBarController: RDVTabBarController) {
+        guard let items = tabBarController.tabBar.items else {
+            return
+        }
+
+        let finishedImage = UIImage(named: "tabbar_selected_background")
+        let unfinishedImage = UIImage(named: "tabbar_normal_background")
+        let tabBarItemImages = ["first", "second", "third"]
+
+
+        var index = 0
+        for item in items {
+            item.setBackgroundSelectedImage(finishedImage, unselectedImage: unfinishedImage)
+            let selectedimage = UIImage(named: "\(tabBarItemImages[index])_selected")
+            let unselectedimage = UIImage(named: "\(tabBarItemImages[index])_normal")
+            item.setFinishedSelectedImage(selectedimage, unselectedImage: unselectedimage)
+
+            index += 1
+        }
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -24,6 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.clear
 
         setupTabViewController()
+
+        window?.rootViewController = self.viewController
 
         window?.makeKeyAndVisible()
 

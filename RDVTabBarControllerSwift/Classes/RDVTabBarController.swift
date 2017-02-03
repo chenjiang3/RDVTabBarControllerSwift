@@ -112,7 +112,7 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
     }
 
     var _viewControllers: [UIViewController]?
-    public var viewControllers: [UIViewController]? {
+    open var viewControllers: [UIViewController]? {
         get {
             return _viewControllers
         }
@@ -132,13 +132,13 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
                     let tabBarItem = RDVTabBarItem()
                     tabBarItem.title = viewController.title ?? ""
                     tabBarItems.append(tabBarItem)
-                    viewController.rdv_setTabBarController(self)
+                    viewController.rdv_tabBarController = self
                 }
                 tabBar.items = tabBarItems
             } else {
                 if let _viewControllers = _viewControllers {
                     for viewController in _viewControllers {
-                        viewController.rdv_setTabBarController(nil)
+                        viewController.rdv_tabBarController = nil
                     }
                 }
                 self._viewControllers = nil
@@ -150,7 +150,6 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.white
-        view.borderColor = UIColor.red
 
         view.addSubview(contentView)
         view.addSubview(tabBar)
@@ -261,42 +260,48 @@ extension RDVTabBarController {
 fileprivate var key_rdv_tabBarController = "rdv_tabBarController"
 public extension UIViewController {
 
-    public func rdv_setTabBarController(_ tabBarController: RDVTabBarController?) {
-        objc_setAssociatedObject(self, &key_rdv_tabBarController, tabBarController, .OBJC_ASSOCIATION_ASSIGN)
+    public var rdv_tabBarController: RDVTabBarController? {
+        get {
+            guard let tabBarController = objc_getAssociatedObject(self, &key_rdv_tabBarController) else {
+                return self.parent?.rdv_tabBarController
+            }
+
+            return tabBarController as? RDVTabBarController
+        }
+        set {
+            objc_setAssociatedObject(self, &key_rdv_tabBarController, newValue, .OBJC_ASSOCIATION_ASSIGN)
+        }
     }
 
-    public func rdv_tabBarController() -> RDVTabBarController? {
-        guard let tabBarController = objc_getAssociatedObject(self, &key_rdv_tabBarController) else {
-            return self.parent?.rdv_tabBarController()
+    public var rdv_tabBarItem: RDVTabBarItem? {
+        get {
+            guard let tabBarController = self.rdv_tabBarController else {
+                return nil
+            }
+
+            let index = tabBarController.indexForViewController(self)
+            return tabBarController.tabBar.items?[index]
         }
+        set {
+            guard let newValue = newValue else {
+                return
+            }
 
-        return tabBarController as? RDVTabBarController
-    }
+            guard let tabBarController = self.rdv_tabBarController else {
+                return
+            }
 
-    public func rdv_tabBarItem() -> RDVTabBarItem? {
-        guard let tabBarController = self.rdv_tabBarController() else {
-            return nil
+            let tabBar = tabBarController.tabBar
+            let index = tabBarController.indexForViewController(self)
+
+            guard let tabBarItems = tabBar.items else {
+                return
+            }
+
+            var copyArray = tabBarItems
+            copyArray[index] = newValue
+            tabBar.items = copyArray
         }
-
-        let index = tabBarController.indexForViewController(self)
-        return tabBarController.tabBar.items?[index]
-    }
-
-    public func rdv_setTabBarItem(_ tabBarItem: RDVTabBarItem) {
-        guard let tabBarController = self.rdv_tabBarController() else {
-            return
-        }
-
-        let tabBar = tabBarController.tabBar
-        let index = tabBarController.indexForViewController(self)
-
-        guard let tabBarItems = tabBar.items else {
-            return
-        }
-
-        var copyArray = tabBarItems
-        copyArray[index] = tabBarItem
-        tabBar.items = copyArray
     }
 
 }

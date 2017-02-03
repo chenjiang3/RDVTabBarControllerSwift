@@ -1,5 +1,5 @@
 //
-//  RDVFirstViewController.swift
+//  RDVSecondViewController.swift
 //  RDVTabBarControllerSwift
 //
 //  Created by chenjiang on 2017/2/3.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class RDVFirstViewController: UITableViewController {
+class RDVSecondViewController: UITableViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.title = "First"
+        self.title = "Second"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,8 +21,6 @@ class RDVFirstViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.rdv_tabBarItem?.badgeValue = "3"
 
         if let tabBar = self.rdv_tabBarController?.tabBar, tabBar.translucent == true {
             let insets = UIEdgeInsets(top: 0, left: 0,
@@ -46,7 +44,7 @@ class RDVFirstViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return 15
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,11 +63,11 @@ class RDVFirstViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let tabBarItem = self.rdv_tabBarItem else {
+        guard let tabBarController = self.rdv_tabBarController else {
             return
         }
 
-        tabBarItem.badgeValue = "\(indexPath.row + 1)"
+        tabBarController.setTabBarHidden(!tabBarController.tabBarHidden, animated: true)
     }
 
 }

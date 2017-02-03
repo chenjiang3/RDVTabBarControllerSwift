@@ -169,19 +169,3 @@ open class RDVTabBar: UIView {
     }
 
 }
-
-// MARK: UIView + extension
-extension UIView {
-    var borderColor: UIColor {
-        get {
-            guard let borderColor = layer.borderColor else {
-                return UIColor.blue
-            }
-            return UIColor(cgColor: borderColor)
-        }
-        set {
-            layer.borderColor = newValue.cgColor
-            layer.borderWidth = 1.0
-        }
-    }
-}

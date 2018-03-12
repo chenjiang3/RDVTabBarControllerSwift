@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RDVTabBarControllerSwift'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Highly customizable tabBar and tabBarController for iOS, written by Swift.'
 
 # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ TODO: Highly customizable tabBar and tabBarController for iOS, written by Swift.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'chenjiang' => '841346457@qq.com' }
-  s.source           = { :git => 'https://github.com/chenjiang3/RDVTabBarControllerSwift.git', :tag => "v0.1.1" }
+  s.source           = { :git => 'https://github.com/chenjiang3/RDVTabBarControllerSwift.git', :tag => "v0.1.2" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'

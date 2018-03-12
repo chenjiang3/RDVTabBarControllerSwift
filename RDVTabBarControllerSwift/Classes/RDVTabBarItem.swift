@@ -109,7 +109,7 @@ open class RDVTabBarItem: UIControl {
         backgroundImage?.draw(in: bounds)
 
         // Draw image and title
-        if title.characters.count == 0 {
+        if title.count == 0 {
             let x = CGFloat(roundf(Float(frameSize.width / CGFloat(2) - imageSize.width / CGFloat(2)))) + imagePositionAdjustment.horizontal
             let y = CGFloat(roundf(Float(frameSize.height / CGFloat(2) - imageSize.height / CGFloat(2)))) + imagePositionAdjustment.vertical
             image?.draw(in: CGRect(x: x, y: y, width: imageSize.width, height: imageSize.height))

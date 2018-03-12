@@ -84,6 +84,10 @@ open class RDVTabBar: UIView {
                                                      green: 245.0 / 255.0,
                                                      blue: 245.0 / 255.0,
                                                      alpha: alpha)
+            
+            if let sv: UIView = self.superview {
+                sv.backgroundColor = backgroundView.backgroundColor
+            }
         }
     }
 

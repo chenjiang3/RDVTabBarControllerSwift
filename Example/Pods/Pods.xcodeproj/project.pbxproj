@@ -11,6 +11,9 @@
 		27CA7E894A69EC607FF521F42D6920CD /* RDVTabBarControllerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0035D676576DC20F4CFDC927D2DB23 /* RDVTabBarControllerSwift-dummy.m */; };
 		4C9D50CA099E593983EC130125BAE429 /* Pods-RDVTabBarControllerSwift_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F5E4FA58BB64D2794D882478905C64 /* Pods-RDVTabBarControllerSwift_Example-dummy.m */; };
 		7457A40AD23FB7E95EC6A38DC2FD0968 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		9AEF0F2F20561FCA001A668A /* UIDevice+RDVTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF0F2E20561FCA001A668A /* UIDevice+RDVTabBar.swift */; };
+		9AEF0F3020561FCA001A668A /* UIDevice+RDVTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF0F2E20561FCA001A668A /* UIDevice+RDVTabBar.swift */; };
+		9AEF0F3120561FCA001A668A /* UIDevice+RDVTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF0F2E20561FCA001A668A /* UIDevice+RDVTabBar.swift */; };
 		9B7FB650FFB827FAD05C100B0F46EE75 /* RDVTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED85F2DDC34BC18F8D315CAEFF30672 /* RDVTabBarController.swift */; };
 		9BA88839A3ED14A561382350559832F2 /* RDVTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD05F7ECA0DFAB1F3B3BE5EA411CFD8 /* RDVTabBarItem.swift */; };
 		A807BB5CADC35E4B0903132F739FB134 /* Pods-RDVTabBarControllerSwift_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EFED3AEBBD5573BE1CFFCC61F52B1C /* Pods-RDVTabBarControllerSwift_Tests-dummy.m */; };
@@ -37,29 +40,30 @@
 		1F46940BD68F5A0FCEB7B70FE421E50A /* RDVTabBarControllerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RDVTabBarControllerSwift-umbrella.h"; sourceTree = "<group>"; };
 		23C2B7A8C4BF90885B18AD77D97C145E /* Pods-RDVTabBarControllerSwift_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RDVTabBarControllerSwift_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2CA421F2E70AC7589306AB4D3267FFB4 /* Pods-RDVTabBarControllerSwift_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RDVTabBarControllerSwift_Example.release.xcconfig"; sourceTree = "<group>"; };
-		2E6A10CC52A4E02427D623E5F34E5DDA /* Pods-RDVTabBarControllerSwift_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RDVTabBarControllerSwift_Example.modulemap"; sourceTree = "<group>"; };
+		2E6A10CC52A4E02427D623E5F34E5DDA /* Pods-RDVTabBarControllerSwift_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RDVTabBarControllerSwift_Example.modulemap"; sourceTree = "<group>"; };
 		35A14E68E3FF477DD5D2ED405EDC7C0C /* Pods-RDVTabBarControllerSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RDVTabBarControllerSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		38E2C6F504114695CC9A58245645D502 /* Pods-RDVTabBarControllerSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RDVTabBarControllerSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CA7F7E31E4038E27079EC46D2235008 /* Pods-RDVTabBarControllerSwift_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RDVTabBarControllerSwift_Example-umbrella.h"; sourceTree = "<group>"; };
 		466D5512CB69479B898FE4879953A3B4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DB8D9C8F131CEF8E720FCD82224CDB0 /* Pods_RDVTabBarControllerSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RDVTabBarControllerSwift_Tests.framework; path = "Pods-RDVTabBarControllerSwift_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB8D9C8F131CEF8E720FCD82224CDB0 /* Pods_RDVTabBarControllerSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDVTabBarControllerSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		533BDFBCEE90BEDD7B74A40B333D8ADF /* Pods-RDVTabBarControllerSwift_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RDVTabBarControllerSwift_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		55EFED3AEBBD5573BE1CFFCC61F52B1C /* Pods-RDVTabBarControllerSwift_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RDVTabBarControllerSwift_Tests-dummy.m"; sourceTree = "<group>"; };
 		5DCCC5BCEB02DEAAAACE965A308D5431 /* Pods-RDVTabBarControllerSwift_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RDVTabBarControllerSwift_Example-resources.sh"; sourceTree = "<group>"; };
 		61C3631C65A5A3B14842E29E39F3479C /* Pods-RDVTabBarControllerSwift_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RDVTabBarControllerSwift_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		63D34B6986E4320442A9C6347A354E8D /* RDVTabBarControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RDVTabBarControllerSwift.framework; path = RDVTabBarControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63D34B6986E4320442A9C6347A354E8D /* RDVTabBarControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RDVTabBarControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6A7A98DDA6C86A2785C5643B2AA53D01 /* Pods-RDVTabBarControllerSwift_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RDVTabBarControllerSwift_Tests.modulemap"; sourceTree = "<group>"; };
+		6A7A98DDA6C86A2785C5643B2AA53D01 /* Pods-RDVTabBarControllerSwift_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RDVTabBarControllerSwift_Tests.modulemap"; sourceTree = "<group>"; };
 		6C3857EB96796446C9EF0D76F2BFC68D /* Pods-RDVTabBarControllerSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RDVTabBarControllerSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		79AFB5C9F9E8F95DB3001A71CA09D9EA /* Pods-RDVTabBarControllerSwift_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RDVTabBarControllerSwift_Tests-umbrella.h"; sourceTree = "<group>"; };
 		7E2261CAB8E76291165829D36703EC29 /* RDVTabBarControllerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RDVTabBarControllerSwift.xcconfig; sourceTree = "<group>"; };
 		7E271472895D831DF070DA671C83C8CB /* Pods-RDVTabBarControllerSwift_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RDVTabBarControllerSwift_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		897DEF70FECE1FA2C286E0B6AF5E56AB /* RDVTabBarControllerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RDVTabBarControllerSwift-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		972FF52D8387B1E164AB231678BA7394 /* Pods_RDVTabBarControllerSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RDVTabBarControllerSwift_Example.framework; path = "Pods-RDVTabBarControllerSwift_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		972FF52D8387B1E164AB231678BA7394 /* Pods_RDVTabBarControllerSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDVTabBarControllerSwift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AEF0F2E20561FCA001A668A /* UIDevice+RDVTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIDevice+RDVTabBar.swift"; path = "RDVTabBarControllerSwift/Classes/UIDevice+RDVTabBar.swift"; sourceTree = "<group>"; };
 		A25C4435672E32BA1DC0869E34A5026F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFD05F7ECA0DFAB1F3B3BE5EA411CFD8 /* RDVTabBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RDVTabBarItem.swift; path = RDVTabBarControllerSwift/Classes/RDVTabBarItem.swift; sourceTree = "<group>"; };
-		B40EE0BE8F13D54C29E833AD7FE46956 /* RDVTabBarControllerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RDVTabBarControllerSwift.modulemap; sourceTree = "<group>"; };
+		B40EE0BE8F13D54C29E833AD7FE46956 /* RDVTabBarControllerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RDVTabBarControllerSwift.modulemap; sourceTree = "<group>"; };
 		BED85F2DDC34BC18F8D315CAEFF30672 /* RDVTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RDVTabBarController.swift; path = RDVTabBarControllerSwift/Classes/RDVTabBarController.swift; sourceTree = "<group>"; };
 		BF54470C3597E228FCA37BBF3978BD8D /* Pods-RDVTabBarControllerSwift_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RDVTabBarControllerSwift_Tests-resources.sh"; sourceTree = "<group>"; };
 		C1F5E4FA58BB64D2794D882478905C64 /* Pods-RDVTabBarControllerSwift_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RDVTabBarControllerSwift_Example-dummy.m"; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				CE4DDCA5F1314D715D13ACFE5E3EF0E6 /* RDVTabBar.swift */,
 				BED85F2DDC34BC18F8D315CAEFF30672 /* RDVTabBarController.swift */,
 				AFD05F7ECA0DFAB1F3B3BE5EA411CFD8 /* RDVTabBarItem.swift */,
+				9AEF0F2E20561FCA001A668A /* UIDevice+RDVTabBar.swift */,
 				CE848D268F18F508A26E00663E72D74A /* Support Files */,
 			);
 			name = RDVTabBarControllerSwift;
@@ -302,6 +307,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					5E27770DE113456C96517EA91647C236 = {
+						LastSwiftMigration = 0920;
+					};
+					D6CCA3D7633593C6D9D7D1179D7850A1 = {
+						LastSwiftMigration = 0920;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -327,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AEF0F2F20561FCA001A668A /* UIDevice+RDVTabBar.swift in Sources */,
 				4C9D50CA099E593983EC130125BAE429 /* Pods-RDVTabBarControllerSwift_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD2B8E2FAA11556DB8331648C42BB3AC /* RDVTabBar.swift in Sources */,
+				9AEF0F3120561FCA001A668A /* UIDevice+RDVTabBar.swift in Sources */,
 				9B7FB650FFB827FAD05C100B0F46EE75 /* RDVTabBarController.swift in Sources */,
 				27CA7E894A69EC607FF521F42D6920CD /* RDVTabBarControllerSwift-dummy.m in Sources */,
 				9BA88839A3ED14A561382350559832F2 /* RDVTabBarItem.swift in Sources */,
@@ -346,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AEF0F3020561FCA001A668A /* UIDevice+RDVTabBar.swift in Sources */,
 				A807BB5CADC35E4B0903132F739FB134 /* Pods-RDVTabBarControllerSwift_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38E2C6F504114695CC9A58245645D502 /* Pods-RDVTabBarControllerSwift_Tests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -419,6 +436,8 @@
 				PRODUCT_NAME = Pods_RDVTabBarControllerSwift_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -461,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C3857EB96796446C9EF0D76F2BFC68D /* Pods-RDVTabBarControllerSwift_Example.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -485,6 +505,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -550,6 +571,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2CA421F2E70AC7589306AB4D3267FFB4 /* Pods-RDVTabBarControllerSwift_Example.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -573,6 +595,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -644,6 +667,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 35A14E68E3FF477DD5D2ED405EDC7C0C /* Pods-RDVTabBarControllerSwift_Tests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -666,6 +690,7 @@
 				PRODUCT_NAME = Pods_RDVTabBarControllerSwift_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

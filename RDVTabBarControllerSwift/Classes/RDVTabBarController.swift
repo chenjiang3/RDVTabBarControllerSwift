@@ -22,6 +22,9 @@
 
 import UIKit
 
+fileprivate let TABBAR_HEIGHT_IPHONE_X: CGFloat = 84.0
+fileprivate let TABBAR_HEIGHT_NORMAL: CGFloat = 49.0
+
 // MARK: - RDVTabBarControllerDelegate
 public protocol RDVTabBarControllerDelegate: NSObjectProtocol {
     func tabBarController(_ tabBarController: RDVTabBarController, shouldSelectViewController viewController: UIViewController) -> Bool
@@ -84,9 +87,25 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
     open lazy var tabBar: RDVTabBar = {
         let _tabBar = RDVTabBar()
         _tabBar.backgroundColor = UIColor.clear
-        _tabBar.autoresizingMask = [.flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
         _tabBar.delegate = self
         return _tabBar
+    }()
+    
+    private lazy var tabBarContainer: UIView = {
+        let v: UIView = UIView()
+        v.backgroundColor = UIColor.white
+        v.autoresizingMask = [.flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
+        v.addSubview(self.tabBar)
+        self.tabBar.translatesAutoresizingMaskIntoConstraints = false
+        let leftConstraint = NSLayoutConstraint(item: self.tabBar, attribute: .left, relatedBy: .equal, toItem: v, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let rightConstraint = NSLayoutConstraint(item: self.tabBar, attribute: .right, relatedBy: .equal, toItem: v, attribute: .right, multiplier: 1.0, constant: 0.0)
+        let topConstraint = NSLayoutConstraint(item: self.tabBar, attribute: .top, relatedBy: .equal, toItem: v, attribute: .top, multiplier: 1.0, constant: 0.0)
+        let heightConstraint = NSLayoutConstraint(item: self.tabBar, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: TABBAR_HEIGHT_NORMAL)
+        v.addConstraint(leftConstraint)
+        v.addConstraint(topConstraint)
+        v.addConstraint(rightConstraint)
+        self.tabBar.addConstraint(heightConstraint)
+        return v
     }()
     
     private var _viewControllers: [UIViewController]?
@@ -130,7 +149,7 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
         view.backgroundColor = UIColor.white
         
         view.addSubview(contentView)
-        view.addSubview(tabBar)
+        view.addSubview(tabBarContainer)
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -148,22 +167,30 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
             }
             
             let viewSize = me.view.bounds.size
-            var tabBarStartingY = viewSize.height
+            var tabBarContainerStartingY = viewSize.height
             var contentViewHeight = viewSize.height
-            var tabBarHeight = me.tabBar.frame.height
+            var tabBarContainerHeight = TABBAR_HEIGHT_NORMAL
+            if isIphoneX() {
+                tabBarContainerHeight = TABBAR_HEIGHT_IPHONE_X
+            } else {
+                tabBarContainerHeight = TABBAR_HEIGHT_NORMAL
+            }
             
-            if tabBarHeight == 0 {
-                tabBarHeight = 49
+            if me.tabBarHidden {
+                tabBarContainerStartingY = viewSize.height
+            } else {
+                tabBarContainerStartingY = viewSize.height - tabBarContainerHeight
             }
             
             if me.tabBarHidden == false {
-                tabBarStartingY = viewSize.height - tabBarHeight
                 if me.tabBar.translucent == false {
-                    contentViewHeight -= (me.tabBar.minimumContentHeight() > 0 ? me.tabBar.minimumContentHeight() : tabBarHeight)
+                    contentViewHeight -= tabBarContainerHeight
                 }
                 me.tabBar.isHidden = false
+                me.tabBarContainer.isHidden = false
             }
-            me.tabBar.frame = CGRect(x: 0, y: tabBarStartingY, width: viewSize.width, height: tabBarHeight)
+            
+            me.tabBarContainer.frame = CGRect(x: 0, y: tabBarContainerStartingY, width: viewSize.width, height: tabBarContainerHeight)
             me.contentView.frame = CGRect(x: 0, y: 0, width: viewSize.width, height: contentViewHeight)
         }
         
@@ -173,6 +200,7 @@ open class RDVTabBarController: UIViewController, RDVTabBarDelegate {
             }
             if me.tabBarHidden {
                 me.tabBar.isHidden = true
+                me.tabBarContainer.isHidden = true
             }
         }
         

@@ -76,15 +76,10 @@ open class RDVTabBar: UIView {
     open var itemWidth: CGFloat?
 
     open var backgroundView = UIView()
-
-    var _translucent: Bool = false
-    open var translucent: Bool {
-        get {
-            return _translucent
-        }
-        set {
-            _translucent = newValue
-            let alpha = newValue ? CGFloat(translucent_value) : CGFloat(1.0)
+    
+    open var translucent: Bool = false {
+        didSet {
+            let alpha = translucent ? CGFloat(translucent_value) : CGFloat(1.0)
             backgroundView.backgroundColor = UIColor(red: 245.0 / 255.0,
                                                      green: 245.0 / 255.0,
                                                      blue: 245.0 / 255.0,

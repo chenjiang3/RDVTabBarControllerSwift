@@ -37,18 +37,13 @@ open class RDVTabBarItem: UIControl {
     ]
 
     open var titlePositionAdjustment = UIOffset.zero
-
-    open var _badgeValue = ""
-    open var badgeValue: String {
-        get {
-            return _badgeValue
-        }
-        set {
-            _badgeValue = newValue
-
+    
+    open var badgeValue: String = "" {
+        didSet {
             setNeedsDisplay()
         }
     }
+    
     open var badgeBackgroundColor = UIColor.red
     open var badgeTextColor = UIColor.white
     open var badgeTextFont = UIFont.systemFont(ofSize: 12)
